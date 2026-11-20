@@ -1,14 +1,79 @@
+
+const BASE = import.meta.env.BASE_URL;
+
+const sitePath = (path) =>
+  `${BASE}${path.replace(/^\/+/, '')}`;
+
+const assetPath = (path) =>
+  sitePath(path);
+
 const tiles = [
-  { label: 'About', kicker: 'Our story', href: '/about', image: '/assets/img1.jpg', className: 'home-tile-feature', text: 'Faith, knowledge and character' },
-  { label: 'Academics', kicker: 'The learning journey', href: '/academics', image: '/assets/img2.JPG', text: 'Learning with purpose' },
-  { label: 'Activities', kicker: 'Beyond the classroom', href: '/about#experience', image: '/manus-storage/async-images/pKxKGI8f0OADwdRwberiQ7/image-3.webp', text: 'Room to grow' },
-  { label: 'Admissions', kicker: 'Join our community', href: '/admissions', image: '/assets/placeholder2.jpg', text: 'The next chapter starts here' },
-  { label: 'Support us', kicker: 'Share the mission', href: '/support', image: '/manus-storage/async-images/KQk8pzagnN2ei8ZQrppgcs/image-1.webp', text: 'Help the light shine' },
-  { label: 'News', kicker: 'From our community', href: '/news', image: '/manus-storage/async-images/KQk8pzagnN2ei8ZQrppgcs/image-2.webp', text: 'Stories worth sharing' },
-  { label: 'Contact', kicker: 'Come and meet us', href: '/contact', image: '/manus-storage/async-images/7D93UaeSd7C3hmIyArAwKB/image-2.webp', text: 'Let’s talk' }
+  {
+    label: 'About',
+    kicker: 'Our story',
+    href: '/about',
+    image: '/assets/img1.jpg',
+    className: 'home-tile-feature',
+    text: 'Faith, knowledge and character'
+  },
+  {
+    label: 'Academics',
+    kicker: 'The learning journey',
+    href: '/academics',
+    image: '/assets/img2.JPG',
+    text: 'Learning with purpose'
+  },
+  {
+    label: 'Activities',
+    kicker: 'Beyond the classroom',
+    href: '/about#experience',
+    image: '/assets/activities.jpg',
+    text: 'Room to grow'
+  },
+  {
+    label: 'Admissions',
+    kicker: 'Join our community',
+    href: '/admissions',
+    image: '/assets/placeholder2.jpg',
+    text: 'The next chapter starts here'
+  },
+  {
+    label: 'Support us',
+    kicker: 'Share the mission',
+    href: '/support',
+    image: '/assets/support.jpg',
+    text: 'Help the light shine'
+  },
+  {
+    label: 'News',
+    kicker: 'From our community',
+    href: '/news',
+    image: '/assets/news.jpg',
+    text: 'Stories worth sharing'
+  },
+  {
+    label: 'Contact',
+    kicker: 'Come and meet us',
+    href: '/contact',
+    image: '/assets/contact.jpg',
+    text: 'Let’s talk'
+  }
 ];
 
-const tileMarkup = (tile) => `<a class="home-tile ${tile.className || ''}" href="${tile.href}" aria-label="${tile.label}" style="--tile-image:url('${tile.image}')"><span class="home-tile-shade"></span><span class="home-tile-copy"><strong>${tile.label}</strong></span></a>`;
+const tileMarkup = (tile) => `
+  <a
+    class="home-tile ${tile.className || ''}"
+    href="${sitePath(tile.href)}"
+    aria-label="${tile.label}"
+    style="--tile-image:url('${assetPath(tile.image)}')"
+  >
+    <span class="home-tile-shade"></span>
+    <span class="home-tile-copy">
+      <strong>${tile.label}</strong>
+    </span>
+  </a>
+`;
+
 
 export function renderHomePage() {
   return `<div class="visual-home" id="top">
