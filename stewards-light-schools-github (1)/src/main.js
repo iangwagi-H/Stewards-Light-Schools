@@ -244,4 +244,8 @@ if (currentPath === '/') {
   app.innerHTML = renderPage(currentPath);
   setupRoutedPage();
 }
+} else {
+  app.innerHTML = renderPage(currentPath);
+  setupRoutedPage();
+}
 
