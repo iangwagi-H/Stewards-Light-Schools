@@ -75,14 +75,102 @@ const tileMarkup = (tile) => `
 `;
 
 
+
 export function renderHomePage() {
   return `<div class="visual-home" id="top">
-    <div class="topline"><div class="container topline-inner"><span class="topline-message"><span class="topline-dot"></span> Admissions open for the 2027 school year</span><div class="topline-links"><a href="tel:+254759908769">+254 759 908 769</a><a href="mailto:inquiries@stewardslightschools.org">inquiries@stewardslightschools.org</a></div></div></div>
-    <header class="site-header home-header" id="site-header"><div class="container header-inner"><a class="brand" href="/" aria-label="Stewards Light Schools home"><img src="/assets/stewards-light-logo.png" alt="Stewards Light Schools" /></a><nav class="main-nav" id="main-nav" aria-label="Primary navigation"><a href="/about">About</a><a href="/academics">Academics</a><a href="/about#experience">Activities</a><a href="/admissions">Admissions</a><a href="/support">Support us</a><a href="/news">News</a><a class="nav-cta" href="/contact">Plan a visit</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">☰</button></div></header>
+
+    <div class="topline">
+      <div class="container topline-inner">
+        <span class="topline-message">
+          <span class="topline-dot"></span>
+          Admissions open for the 2027 school year
+        </span>
+        <div class="topline-links">
+          <a href="tel:+254759908769">+254 759 908 769</a>
+          <a href="mailto:inquiries@stewardslightschools.org">inquiries@stewardslightschools.org</a>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header home-header" id="site-header">
+      <div class="container header-inner">
+
+        <a class="brand" href="${sitePath('/')}" aria-label="Stewards Light Schools home">
+          <img src="${assetPath('/assets/stewards-light-logo.png')}" alt="Stewards Light Schools" />
+        </a>
+
+        <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+          <a href="${sitePath('/about')}">About</a>
+          <a href="${sitePath('/academics')}">Academics</a>
+          <a href="${sitePath('/about')}#experience">Activities</a>
+          <a href="${sitePath('/admissions')}">Admissions</a>
+          <a href="${sitePath('/support')}">Support us</a>
+          <a href="${sitePath('/news')}">News</a>
+          <a class="nav-cta" href="${sitePath('/contact')}">Plan a visit</a>
+        </nav>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Open menu"
+        >☰</button>
+
+      </div>
+    </header>
+
     <main>
-      <section class="home-tiles-section"><div class="container"><div class="home-tile-grid">${tiles.map(tileMarkup).join('')}</div></div></section>
+      <section class="home-tiles-section">
+        <div class="container">
+          <div class="home-tile-grid">
+            ${tiles.map(tileMarkup).join('')}
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer home-footer"><div class="container footer-main"><div class="footer-brand"><img src="/assets/stewards-light-logo.png" alt="Stewards Light Schools" /><p>Faith, knowledge and character for a life of purpose.</p></div><div class="footer-nav"><div><p class="footer-label">Visit</p><a href="/about">Our story</a><a href="/academics">Learning journey</a><a href="/contact">Contact</a></div><div><p class="footer-label">Connect</p><a href="/admissions">Admissions</a><a href="/support">Support us</a><a href="/news">News</a></div></div><div class="footer-contact"><p class="footer-label">Find us</p><p>Kapsabet–Chavakali Main Road<br />Kenya</p><a href="mailto:inquiries@stewardslightschools.org">inquiries@stewardslightschools.org</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Stewards Light Schools</span><span>Guided by faith. Growing in knowledge.</span><a href="#top">Back to top</a></div></footer>
+
+    <footer class="site-footer home-footer">
+      <div class="container footer-main">
+
+        <div class="footer-brand">
+          <img src="${assetPath('/assets/stewards-light-logo.png')}" alt="Stewards Light Schools" />
+          <p>Faith, knowledge and character for a life of purpose.</p>
+        </div>
+
+        <div class="footer-nav">
+          <div>
+            <p class="footer-label">Visit</p>
+            <a href="${sitePath('/about')}">Our story</a>
+            <a href="${sitePath('/academics')}">Learning journey</a>
+            <a href="${sitePath('/contact')}">Contact</a>
+          </div>
+
+          <div>
+            <p class="footer-label">Connect</p>
+            <a href="${sitePath('/admissions')}">Admissions</a>
+            <a href="${sitePath('/support')}">Support us</a>
+            <a href="${sitePath('/news')}">News</a>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <p class="footer-label">Find us</p>
+          <p>Kapsabet–Chavakali Main Road<br />Kenya</p>
+          <a href="mailto:inquiries@stewardslightschools.org">
+            inquiries@stewardslightschools.org
+          </a>
+        </div>
+
+      </div>
+
+      <div class="container footer-bottom">
+        <span>© <span id="year"></span> Stewards Light Schools</span>
+        <span>Guided by faith. Growing in knowledge.</span>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
   </div>`;
 }
 
