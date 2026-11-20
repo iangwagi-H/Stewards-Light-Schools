@@ -232,6 +232,7 @@ form?.addEventListener('submit', (event) => {
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 
+
 const basePath = import.meta.env.BASE_URL;
 const currentPath = window.location.pathname
   .replace(basePath, '/')
@@ -244,8 +245,5 @@ if (currentPath === '/') {
   app.innerHTML = renderPage(currentPath);
   setupRoutedPage();
 }
-} else {
-  app.innerHTML = renderPage(currentPath);
-  setupRoutedPage();
-}
+
 
