@@ -7,6 +7,20 @@ const pageNav = [
   ['News', '/news']
 ];
 
+const BASE = import.meta.env.BASE_URL;
+
+const withBasePath = (html) => {
+  return html
+    .replace(
+      /(href|src)=("|')\/(?!\/)/g,
+      `$1=$2${BASE}`
+    )
+    .replace(
+      /url\((['"])\/(?!\/)/g,
+      `url($1${BASE}`
+    );
+};
+
 const check = '<span class="page-check" aria-hidden="true">✓</span>';
 
 const pageHeader = (active) => `
@@ -85,15 +99,29 @@ const renderContact = () => `
   </main>${pageFooter()}
 `;
 
+
 export function renderPage(pathname) {
   const route = pathname.replace(/\/$/, '') || '/';
-  if (route === '/about') return renderAbout();
-  if (route === '/academics') return renderAcademics();
-  if (route === '/admissions') return renderAdmissions();
-  if (route === '/support') return renderSupport();
-  if (route === '/news') return renderNews();
-  return renderContact();
+
+  let html;
+
+  if (route === '/about') {
+    html = renderAbout();
+  } else if (route === '/academics') {
+    html = renderAcademics();
+  } else if (route === '/admissions') {
+    html = renderAdmissions();
+  } else if (route === '/support') {
+    html = renderSupport();
+  } else if (route === '/news') {
+    html = renderNews();
+  } else {
+    html = renderContact();
+  }
+
+  return withBasePath(html);
 }
+
 
 function setupForm(formSelector, statusSelector, successMessage) {
   const form = document.querySelector(formSelector);
