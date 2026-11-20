@@ -231,10 +231,17 @@ form?.addEventListener('submit', (event) => {
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-if (window.location.pathname === '/') {
+
+const basePath = import.meta.env.BASE_URL;
+const currentPath = window.location.pathname
+  .replace(basePath, '/')
+  .replace(/\/$/, '') || '/';
+
+if (currentPath === '/') {
   app.innerHTML = renderHomePage();
   setupHomePage();
 } else {
-  app.innerHTML = renderPage(window.location.pathname);
+  app.innerHTML = renderPage(currentPath);
   setupRoutedPage();
 }
+
